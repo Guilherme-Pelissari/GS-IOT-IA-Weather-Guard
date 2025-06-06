@@ -88,18 +88,32 @@ Instale as bibliotecas via **Arduino Library Manager**.
   ```bash
   sudo apt install mosquitto mosquitto-clients
 
-## 2. Rodar o Fluxo no Node-RED
+## 🔁 Como Importar o Fluxo do Node-RED
 
-- Importe o fluxo no Node-RED.
-- Configure o nó MQTT com o broker correto.
-- Clique em **Deploy**.
+Este repositório inclui um fluxo pronto do Node-RED para processar os dados do sensor e exibir informações de temperatura e umidade. Siga o passo a passo abaixo para importar o fluxo no seu ambiente local:
 
-## 3. Simular Dados (opcional)
+---
 
-- Use um nó `inject` com payload:
+### 📥 Arquivo do Fluxo
 
-```json
-{
-  "temperature": 25.6,
-  "humidity": 58.2
-}
+O fluxo está localizado no arquivo:
+
+---
+
+### 🧭 Passo a Passo para Importar no Node-RED
+
+1. **Abra o Node-RED** no seu navegador (geralmente em `http://localhost:1880`).
+2. No canto superior direito, clique no botão de menu (☰) e selecione **"Import"**.
+3. Clique em **"select a file to import"** ou cole o conteúdo do arquivo `flow.json`.
+4. Escolha a opção **"Import to new flow"** ou **"Import to current flow"** conforme sua preferência.
+5. Clique em **"Import"**.
+6. Após a importação, clique em **Deploy** no canto superior direito para ativar o fluxo.
+
+---
+
+### ⚠️ Observações Importantes
+
+- Verifique se o **broker MQTT** está corretamente configurado no nó MQTT do fluxo.
+- O fluxo espera receber dados no tópico: `weatherguard/monitoramento/clima`.
+
+
