@@ -65,6 +65,7 @@ No código `.ino` do ESP32, utilize as seguintes bibliotecas:
 - `DHT.h`
 - `WiFi.h`
 - `PubSubClient.h`
+- `LiquidCrystal I2C`
 
 Instale as bibliotecas via **Arduino Library Manager**.
 
