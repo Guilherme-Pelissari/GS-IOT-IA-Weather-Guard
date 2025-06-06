@@ -2,26 +2,26 @@
 #include <PubSubClient.h>
 #include <DHTesp.h>
 #include <LiquidCrystal_I2C.h>
-
+// Definição dos pinos para o sensor DHT22 e sliders
 #define DHTPIN 18 
 #define TEMP_SLIDER_PIN 34 
 #define HUMIDITY_SLIDER_PIN 35 
 DHTesp dht;
-
+// Configurações de rede WiFi
 const char* ssid = "Wokwi-GUEST";
 const char* password = "";
-
+// Configurações do servidor MQTT
 const char* mqtt_server = "broker.hivemq.com";
 const char* mqtt_topic = "weatherguard/monitoramento/clima";
-
+// Objetos para conexão WiFi e MQTT
 WiFiClient espClient;
 PubSubClient client(espClient);
-
+// Definição dos pinos para LEDs
 const int LED_RED = 27;  
 const int LED_BLUE = 26; 
-
+// Inicialização do display LCD I2C
 LiquidCrystal_I2C lcd(0x27, 20, 4); 
-
+// Função para conectar à rede WiFi
 void setup_wifi() {
   delay(10);
   Serial.println("Conectando ao WiFi...");
@@ -44,7 +44,7 @@ void setup_wifi() {
     digitalWrite(LED_BLUE, LOW);
   }
 }
-
+// Função para reconectar ao broker MQTT
 void reconnect() {
   int attempts = 0;
   while (!client.connected() && attempts < 3) {
@@ -68,7 +68,7 @@ void reconnect() {
     digitalWrite(LED_BLUE, LOW);
   }
 }
-
+// Função de inicialização
 void setup() {
   pinMode(LED_RED, OUTPUT);
   pinMode(LED_BLUE, OUTPUT);
@@ -99,7 +99,7 @@ void setup() {
   lcd.setCursor(0, 0);
   lcd.print("Iniciando...");
 }
-
+// Loop principal
 void loop() {
   if (WiFi.status() != WL_CONNECTED) {
     Serial.println("WiFi desconectado. Tentando reconectar...");
@@ -129,7 +129,7 @@ void loop() {
     if (tempRaw < 50) t = data.temperature;
     if (humidityRaw < 50) h = data.humidity;
   }
-
+  // Verifica se os valores são válidos
   if (isnan(t) || isnan(h)) {
     Serial.println("Falha ao ler valores: valor NaN detectado.");
     lcd.clear();
@@ -140,14 +140,14 @@ void loop() {
     delay(2000);
     return;
   }
-
+  // Exibe valores no monitor serial
   Serial.print("Temperatura: ");
   Serial.print(t);
   Serial.println(" °C");
   Serial.print("Umidade: ");
   Serial.print(h);
   Serial.println(" %");
-
+  // Atualiza o display LCD
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("Temperatura: ");
@@ -163,17 +163,17 @@ void loop() {
   lcd.setCursor(0, 3);
   lcd.print("MQTT: ");
   lcd.print(client.connected() ? "Conectado" : "Desconectado");
-
+  // Cria a mensagem JSON para o MQTT
   String payload = "{";
   payload += "\"temperatura\":";
   payload += t;
   payload += ",\"umidade\":";
   payload += h;
   payload += "}";
-
+  // Exibe a mensagem no monitor serial
   Serial.print("Publicando no tópico MQTT: ");
   Serial.println(payload);
-
+  // Publica a mensagem no MQTT, se conectado
   if (client.connected()) {
     client.publish(mqtt_topic, payload.c_str());
     Serial.println("Mensagem publicada com sucesso!");
