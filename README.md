@@ -62,3 +62,19 @@ Instale as bibliotecas via **Arduino Library Manager**.
 - Use o [HiveMQ Broker público](https://www.hivemq.com/demos/websocket-client/) ou instale o Mosquitto localmente:
   ```bash
   sudo apt install mosquitto mosquitto-clients
+
+## 2. Rodar o Fluxo no Node-RED
+
+- Importe o fluxo no Node-RED.
+- Configure o nó MQTT com o broker correto.
+- Clique em **Deploy**.
+
+## 3. Simular Dados (opcional)
+
+- Use um nó `inject` com payload:
+
+```json
+{
+  "temperature": 25.6,
+  "humidity": 58.2
+}
