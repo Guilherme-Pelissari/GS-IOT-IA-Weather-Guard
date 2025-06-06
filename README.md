@@ -89,7 +89,7 @@ Instale as bibliotecas via **Arduino Library Manager**.
   ```bash
   sudo apt install mosquitto mosquitto-clients
 
-## 🔁 Como Importar o Fluxo do Node-RED
+## 🔁 Como Importar o Fluxo do Node-RED para testar o funcionamento do código
 
 Este repositório inclui um fluxo pronto do Node-RED para processar os dados do sensor e exibir informações de temperatura e umidade. Siga o passo a passo abaixo para importar o fluxo no seu ambiente local:
 
