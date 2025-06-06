@@ -120,6 +120,7 @@ Se você instalou o Node-RED via npm, abra o terminal e execute:
 
 ```bash
 npm install node-red-dashboard
+```
 
 ### 2. Via interface do Node-RED
 
