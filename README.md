@@ -75,7 +75,7 @@ Instale as bibliotecas via **Arduino Library Manager**.
 
 1. **ESP32** conecta ao Wi-Fi.
 2. Lê os dados do **DHT22**.
-3. Envia via MQTT para o tópico `sensor/dht`.
+3. Envia via MQTT para o tópico `weatherguard/monitoramento/clima`.
 4. **Node-RED** recebe os dados e os encaminha para debug e/ou dashboard.
 5. O **app React Native** também consome os dados em tempo real.
 
