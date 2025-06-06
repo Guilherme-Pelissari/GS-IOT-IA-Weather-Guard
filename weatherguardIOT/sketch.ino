@@ -3,9 +3,9 @@
 #include <DHTesp.h>
 #include <LiquidCrystal_I2C.h>
 
-#define DHTPIN 18 // GPIO D18 for DHT22
-#define TEMP_SLIDER_PIN 34 // Analog pin for temperature slider
-#define HUMIDITY_SLIDER_PIN 35 // Analog pin for humidity slider
+#define DHTPIN 18 
+#define TEMP_SLIDER_PIN 34 
+#define HUMIDITY_SLIDER_PIN 35 
 DHTesp dht;
 
 const char* ssid = "Wokwi-GUEST";
@@ -112,20 +112,20 @@ void loop() {
 
   client.loop();
 
-  // Read from sliders
+  
   int tempRaw = analogRead(TEMP_SLIDER_PIN);
   int humidityRaw = analogRead(HUMIDITY_SLIDER_PIN);
 
-  // Map slider values: 0-4095 to temperature (0-50°C) and humidity (0-100%)
+  
   float t = map(tempRaw, 0, 4095, 0, 50);
   float h = map(humidityRaw, 0, 4095, 0, 100);
 
-  // Fallback to DHT22 if sliders are not providing valid data
+  
   TempAndHumidity data = dht.getTempAndHumidity();
   if (isnan(data.temperature) || isnan(data.humidity)) {
     Serial.println("Usando valores dos sliders...");
   } else {
-    // Optionally blend or override with DHT22 values if sliders are at 0
+    
     if (tempRaw < 50) t = data.temperature;
     if (humidityRaw < 50) h = data.humidity;
   }
