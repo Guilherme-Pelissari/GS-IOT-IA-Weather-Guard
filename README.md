@@ -97,7 +97,7 @@ Este repositório inclui um fluxo pronto do Node-RED para processar os dados do 
 
 ### 📥 Arquivo do Fluxo
 
-O fluxo está localizado no arquivo:
+O fluxo está localizado no arquivo Node-red weatherguard nesse repositório
 
 ---
 
