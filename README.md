@@ -1,3 +1,4 @@
+LINK DO PROJETO NO WOKWI: https://wokwi.com/projects/432739300429044737
 # 🌦️ WeatherGuard
 
 **WeatherGuard** é uma solução de monitoramento climático em tempo real, desenvolvida para enfrentar o aumento de desastres naturais no Brasil. Utilizando um sistema IoT baseado em ESP32 com sensor DHT22, protocolo MQTT, Node-RED e um aplicativo mobile em React Native, o projeto visa proteger comunidades vulneráveis por meio da emissão de alertas climáticos automáticos, acessíveis e escaláveis.
