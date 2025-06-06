@@ -110,6 +110,33 @@ O fluxo está localizado no arquivo:
 5. Clique em **"Import"**.
 6. Após a importação, clique em **Deploy** no canto superior direito para ativar o fluxo.
 
+O nó `ui_gauge` pertence ao **Node-RED Dashboard**, que precisa ser instalado separadamente.
+
+## 📦 Instalação do Node-RED Dashboard
+
+### 1. Via terminal (recomendado)
+
+Se você instalou o Node-RED via npm, abra o terminal e execute:
+
+```bash
+npm install node-red-dashboard
+
+### 2. Via interface do Node-RED
+
+1. Clique no botão ☰ no canto superior direito.
+2. Vá em **Gerenciar paleta**.
+3. Acesse a aba **Instalar**.
+4. Busque por `node-red-dashboard`.
+5. Clique em **Instalar**.
+
+---
+
+### 🚀 Acessando o Dashboard
+
+Após instalar, os nós `ui_gauge`, `ui_chart`, `ui_text`, entre outros, estarão disponíveis na barra lateral esquerda.
+
+Você poderá visualizar o dashboard acessando: http://localhost:1880/ui
+
 ---
 
 ### ⚠️ Observações Importantes
