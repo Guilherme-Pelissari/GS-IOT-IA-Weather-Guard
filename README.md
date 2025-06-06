@@ -1,23 +1,47 @@
 # 🌦️ WeatherGuard
 
-WeatherGuard é um sistema de monitoramento de temperatura e umidade usando ESP32, sensor DHT22, MQTT, Node-RED e um aplicativo mobile feito em React Native. Ideal para aplicações de IoT e automação residencial.
+**WeatherGuard** é uma solução de monitoramento climático em tempo real, desenvolvida para enfrentar o aumento de desastres naturais no Brasil. Utilizando um sistema IoT baseado em ESP32 com sensor DHT22, protocolo MQTT, Node-RED e um aplicativo mobile em React Native, o projeto visa proteger comunidades vulneráveis por meio da emissão de alertas climáticos automáticos, acessíveis e escaláveis.
+
+---
+
+## 📍 Contexto e Problema
+
+O Brasil tem enfrentado um crescimento alarmante de eventos climáticos extremos, como chuvas torrenciais e ventos intensos. Segundo o INPE, em 2024 houve um aumento de 15% nesses eventos em relação à média da última década. A ausência de sistemas acessíveis e eficazes de alerta agrava os riscos, especialmente em comunidades menos favorecidas.
+
+---
+
+## 🎯 Objetivo do Projeto
+
+O **WeatherGuard** busca promover segurança e resiliência frente aos desastres climáticos, integrando dados de APIs meteorológicas públicas (OpenWeatherMap) com sensores IoT locais. Por meio de um backend inteligente, o sistema analisa essas informações e envia notificações personalizadas aos usuários, permitindo uma resposta rápida a situações de risco.
+
+---
+
+## 🛠️ Solução Proposta
+
+O sistema é dividido em quatro pilares:
+
+1. **Monitoramento em Tempo Real**
+   - Coleta de dados via API OpenWeatherMap (chuva, vento, temperatura).
+   - Medição local de temperatura e umidade com **ESP32 + DHT22**.
+
+2. **Processamento Inteligente**
+   - Backend em **Spring Boot** hospedado no **Render** analisa os dados e detecta padrões de risco.
+
+3. **Alertas Automatizados**
+   - Geração de alertas personalizados e envio ao aplicativo mobile em tempo real.
+
+4. **Arquitetura Robusta**
+   - Estrutura baseada no framework **TOGAF**, garantindo escalabilidade, confiabilidade e acessibilidade, com camadas bem definidas de negócio, aplicação (MQTT, HTTP/REST) e tecnologia (IoT, Render, Oracle Cloud).
 
 ---
 
 ## 📡 Visão Geral do Projeto
 
 - 📍 **ESP32** lê dados do sensor **DHT22** (temperatura e umidade).
-- 🔁 Envia os dados via **MQTT** no tópico `sensor/dht`.
+- 🔁 Envia os dados via **MQTT** no tópico `weatherguard/monitoramento/clima`.
 - 🌐 **Node-RED** escuta o tópico e processa os dados.
 - 📱 Aplicativo mobile **React Native** se conecta ao broker MQTT para exibir os dados em tempo real.
-
----
-
-## 📷 Screenshot do Fluxo no Node-RED
-
-![Node-RED Flow](./print-node-red.png)
-
-> ⚠️ Nomeie o print da tela como `print-node-red.png` e coloque-o na raiz do repositório.
+- LINK DO PROJETO NO WOKWI: https://wokwi.com/projects/432739300429044737
 
 ---
 
