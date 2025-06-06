@@ -1,0 +1,194 @@
+[
+    {
+        "id": "17d85aca444930ae",
+        "type": "tab",
+        "label": "Fluxo 5",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1ddad599d0c75130",
+        "type": "debug",
+        "z": "17d85aca444930ae",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "3bdb17c9794f42db",
+        "type": "json",
+        "z": "17d85aca444930ae",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 650,
+        "y": 440,
+        "wires": [
+            [
+                "1ddad599d0c75130",
+                "68bc21b3187b0fa9"
+            ]
+        ]
+    },
+    {
+        "id": "0c2fb1e0ac7e460a",
+        "type": "mqtt in",
+        "z": "17d85aca444930ae",
+        "name": "",
+        "topic": "weatherguard/monitoramento/clima",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "797c2e302ad7c932",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 380,
+        "y": 440,
+        "wires": [
+            [
+                "3bdb17c9794f42db"
+            ]
+        ]
+    },
+    {
+        "id": "68bc21b3187b0fa9",
+        "type": "function",
+        "z": "17d85aca444930ae",
+        "name": "function 6",
+        "func": "// Converter string JSON em objeto\nvar dados = JSON.parse(msg.payload);\n\n// Extrair temperatura e umidade do objeto\nvar temp = dados.temperatura;\nvar umid = dados.umidade;\n\n// Criar duas mensagens separadas\nvar msg1 = { payload: temp }; // Para o gauge de temperatura\nvar msg2 = { payload: umid }; // Para o gauge de umidade\n\n// Retornar as duas mensagens\nreturn [msg1, msg2];\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 460,
+        "wires": [
+            [
+                "2225822cf1de5159"
+            ],
+            [
+                "def5b58eb3661b71"
+            ]
+        ]
+    },
+    {
+        "id": "2225822cf1de5159",
+        "type": "ui_gauge",
+        "z": "17d85aca444930ae",
+        "name": "",
+        "group": "e38c1131c7cd3d8e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "60",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1050,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "def5b58eb3661b71",
+        "type": "ui_gauge",
+        "z": "17d85aca444930ae",
+        "name": "",
+        "group": "e38c1131c7cd3d8e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "%",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1050,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "797c2e302ad7c932",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e38c1131c7cd3d8e",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "676cd8c323faf42b",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "676cd8c323faf42b",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
